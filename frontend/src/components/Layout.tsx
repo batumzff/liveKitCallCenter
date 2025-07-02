@@ -11,6 +11,7 @@ import {
   PhoneIcon,
   ChartBarIcon,
   CogIcon,
+  BeakerIcon,
 } from '@heroicons/react/24/outline'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
@@ -22,6 +23,7 @@ const navigation = [
   { name: 'AI Agents', href: '/dashboard/agents', icon: ChatBubbleLeftRightIcon },
   { name: 'Campaigns', href: '/dashboard/campaigns', icon: UsersIcon },
   { name: 'Calls', href: '/dashboard/calls', icon: PhoneIcon },
+  { name: 'Call Analysis', href: '/dashboard/calls/analysis', icon: BeakerIcon },
   { name: 'Analytics', href: '/dashboard/analytics', icon: ChartBarIcon },
 ]
 

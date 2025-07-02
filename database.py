@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 
 from models import (
     Project, AIAgent, Contact, Campaign, Call, 
-    CallAnalytics, GroupCall, GroupCallParticipant
+    CallAnalytics, CallAnalysis, GroupCall, GroupCallParticipant
 )
 
 load_dotenv()
@@ -36,6 +36,7 @@ async def connect_to_mongo():
             Campaign,
             Call,
             CallAnalytics,
+            CallAnalysis,
             GroupCall,
             GroupCallParticipant,
         ]

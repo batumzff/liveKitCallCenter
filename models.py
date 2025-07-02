@@ -111,11 +111,13 @@ class Call(Document):
     transcript: Optional[str] = None
     
     # Analysis
+    sentiment: Optional[str] = None  # positive, negative, neutral
     sentiment_score: Optional[float] = None  # -1.00 to 1.00
     call_summary: Optional[str] = None
     key_points: List[str] = Field(default_factory=list)
     action_items: List[str] = Field(default_factory=list)
     call_outcome: Optional[str] = None
+    analysis_completed: bool = False
     
     created_at: datetime = Field(default_factory=datetime.utcnow)
     
@@ -159,6 +161,44 @@ class CallAnalytics(Document):
         indexes = [
             IndexModel([("call_id", 1)], unique=True),
             IndexModel([("project_id", 1)])
+        ]
+
+
+class CallAnalysis(Document):
+    """Advanced call analysis with AI-powered insights"""
+    id: str = Field(default_factory=lambda: str(uuid.uuid4()), alias="_id")
+    call_id: Indexed(str)
+    
+    # Sentiment Analysis
+    sentiment: str  # positive, negative, neutral
+    sentiment_confidence: float = 0.0
+    emotions: Dict[str, float] = Field(default_factory=dict)
+    
+    # Success Analysis
+    success_probability: float = 0.0
+    success_indicators: List[str] = Field(default_factory=list)
+    failure_indicators: List[str] = Field(default_factory=list)
+    voicemail_detected: bool = False
+    call_outcome: str  # successful, failed, voicemail, no_answer
+    
+    # Key Insights
+    key_topics: List[str] = Field(default_factory=list)
+    customer_intent: str = ""
+    agent_performance: str = ""
+    action_items: List[str] = Field(default_factory=list)
+    customer_satisfaction: float = 0.0  # 0-1 scale
+    
+    # Analysis metadata
+    analysis_timestamp: datetime = Field(default_factory=datetime.utcnow)
+    analysis_version: str = "1.0"
+    
+    class Settings:
+        name = "call_analysis"
+        indexes = [
+            IndexModel([("call_id", 1)], unique=True),
+            IndexModel([("sentiment", 1)]),
+            IndexModel([("call_outcome", 1)]),
+            IndexModel([("analysis_timestamp", -1)])
         ]
 
 

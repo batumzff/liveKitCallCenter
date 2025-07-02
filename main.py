@@ -7,7 +7,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 from database import init_db, close_mongo_connection
-from api.routes import projects, agents, campaigns, calls, analytics
+from api.routes import projects, agents, campaigns, calls, analytics, call_analysis
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -50,6 +50,7 @@ app.include_router(agents.router, prefix="/api/v1/agents", tags=["agents"])
 app.include_router(campaigns.router, prefix="/api/v1/campaigns", tags=["campaigns"])
 app.include_router(calls.router, prefix="/api/v1/calls", tags=["calls"])
 app.include_router(analytics.router, prefix="/api/v1/analytics", tags=["analytics"])
+app.include_router(call_analysis.router, prefix="/api/v1/call-analysis", tags=["call-analysis"])
 
 # Include SIP integration routes (commented out until livekit is installed)
 # from api.routes import sip_integration

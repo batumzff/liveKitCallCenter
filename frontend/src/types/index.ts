@@ -62,11 +62,13 @@ export interface Call {
   duration_seconds?: number
   recording_url?: string
   transcript?: string
+  sentiment?: string
   sentiment_score?: number
   call_summary?: string
   key_points: string[]
   action_items: string[]
   call_outcome?: string
+  analysis_completed: boolean
   created_at: string
 }
 
@@ -140,6 +142,56 @@ export interface CallOutcome {
   outcome: string
   count: number
   percentage: number
+}
+
+// Call Analysis Types
+export interface CallAnalysis {
+  id: string
+  call_id: string
+  sentiment: 'positive' | 'negative' | 'neutral'
+  sentiment_confidence: number
+  emotions: Record<string, number>
+  success_probability: number
+  success_indicators: string[]
+  failure_indicators: string[]
+  voicemail_detected: boolean
+  call_outcome: 'successful' | 'failed' | 'voicemail' | 'no_answer'
+  key_topics: string[]
+  customer_intent: string
+  agent_performance: string
+  action_items: string[]
+  customer_satisfaction: number
+  analysis_timestamp: string
+  analysis_version: string
+}
+
+export interface CallAnalysisSummary {
+  project_id: string
+  total_calls: number
+  analyzed_calls: number
+  sentiment_distribution: {
+    positive: number
+    negative: number
+    neutral: number
+  }
+  average_success_rate: number
+  average_satisfaction: number
+  voicemail_rate: number
+  success_rate: number
+}
+
+export interface SentimentAnalysisResult {
+  sentiment: 'positive' | 'negative' | 'neutral'
+  confidence: number
+  emotions: Record<string, number>
+}
+
+export interface CallSuccessAnalysis {
+  success_probability: number
+  success_indicators: string[]
+  failure_indicators: string[]
+  voicemail_detected: boolean
+  call_outcome: 'successful' | 'failed' | 'voicemail' | 'no_answer'
 }
 
 // API Request/Response types

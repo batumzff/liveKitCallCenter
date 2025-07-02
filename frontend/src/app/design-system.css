@@ -1,0 +1,254 @@
+/* Design System Base Styles */
+@layer components {
+
+/* Form Input Base Styles */
+.form-input {
+  @apply block w-full rounded-lg border-border-light bg-background-primary px-3 py-2.5 text-text-primary placeholder-text-tertiary shadow-soft transition-colors duration-200;
+  @apply focus:border-border-focus focus:ring-2 focus:ring-primary-500/20 focus:outline-none;
+  @apply disabled:bg-secondary-50 disabled:text-text-disabled disabled:cursor-not-allowed;
+}
+
+.form-input.error {
+  @apply border-border-error focus:border-border-error focus:ring-error-500/20;
+}
+
+.form-input.success {
+  @apply border-border-success focus:border-border-success focus:ring-success-500/20;
+}
+
+/* Form Select Styles */
+.form-select {
+  @apply form-input appearance-none pr-10;
+  background-image: url("data:image/svg+xml,%3csvg width='12' height='8' viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M1 1L6 6L11 1' stroke='%2364748B' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3e%3c/svg%3e");
+  background-position: right 0.75rem center;
+  background-repeat: no-repeat;
+}
+
+/* Form Textarea Styles */
+.form-textarea {
+  @apply form-input resize-y min-h-[100px];
+}
+
+/* Form Label Styles */
+.form-label {
+  @apply block text-sm font-medium text-text-primary mb-2;
+}
+
+.form-label.required::after {
+  @apply text-error-500 ml-1;
+  content: '*';
+}
+
+/* Form Error Message */
+.form-error {
+  @apply mt-1 text-sm text-error-600;
+}
+
+/* Form Helper Text */
+.form-helper {
+  @apply mt-1 text-sm text-text-tertiary;
+}
+
+/* Button Base Styles */
+.btn-base {
+  @apply inline-flex items-center justify-center px-4 py-2.5 text-sm font-medium rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
+}
+
+/* Button Variants */
+.btn-primary {
+  @apply btn-base bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-soft;
+}
+
+.btn-secondary {
+  @apply btn-base bg-secondary-100 text-secondary-700 hover:bg-secondary-200 focus:ring-secondary-500 border border-border-light;
+}
+
+.btn-success {
+  @apply btn-base bg-success-600 text-white hover:bg-success-700 focus:ring-success-500;
+}
+
+.btn-warning {
+  @apply btn-base bg-warning-600 text-white hover:bg-warning-700 focus:ring-warning-500;
+}
+
+.btn-error {
+  @apply btn-base bg-error-600 text-white hover:bg-error-700 focus:ring-error-500;
+}
+
+.btn-outline {
+  @apply btn-base bg-transparent border border-border-medium text-text-primary hover:bg-secondary-50 focus:ring-primary-500;
+}
+
+.btn-ghost {
+  @apply btn-base bg-transparent text-text-secondary hover:bg-secondary-50 hover:text-text-primary focus:ring-primary-500;
+}
+
+/* Button Sizes */
+.btn-sm {
+  @apply px-3 py-1.5 text-xs;
+}
+
+.btn-lg {
+  @apply px-6 py-3 text-base;
+}
+
+.btn-xl {
+  @apply px-8 py-4 text-lg;
+}
+
+/* Card Styles */
+.card {
+  @apply bg-background-card rounded-xl shadow-card border border-border-light p-6;
+}
+
+.card-header {
+  @apply border-b border-border-light pb-4 mb-4;
+}
+
+.card-title {
+  @apply text-lg font-semibold text-text-primary;
+}
+
+.card-description {
+  @apply text-sm text-text-secondary mt-1;
+}
+
+/* Status Badges */
+.badge {
+  @apply inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium;
+}
+
+.badge-success {
+  @apply badge bg-success-100 text-success-800;
+}
+
+.badge-warning {
+  @apply badge bg-warning-100 text-warning-800;
+}
+
+.badge-error {
+  @apply badge bg-error-100 text-error-800;
+}
+
+.badge-info {
+  @apply badge bg-info-100 text-info-800;
+}
+
+.badge-neutral {
+  @apply badge bg-secondary-100 text-secondary-700;
+}
+
+/* Table Styles */
+.table {
+  @apply min-w-full divide-y divide-border-light;
+}
+
+.table-header {
+  @apply bg-secondary-50;
+}
+
+.table-header-cell {
+  @apply px-6 py-3 text-left text-xs font-medium text-text-secondary uppercase tracking-wider;
+}
+
+.table-body {
+  @apply bg-background-primary divide-y divide-border-light;
+}
+
+.table-row {
+  @apply hover:bg-secondary-50 transition-colors duration-150;
+}
+
+.table-cell {
+  @apply px-6 py-4 whitespace-nowrap text-sm text-text-primary;
+}
+
+/* Modal Styles */
+.modal-overlay {
+  @apply fixed inset-0 bg-black/50 backdrop-blur-sm z-50;
+}
+
+.modal-container {
+  @apply fixed inset-0 overflow-y-auto flex min-h-full items-center justify-center p-4;
+}
+
+.modal-panel {
+  @apply w-full max-w-md transform overflow-hidden rounded-2xl bg-background-modal p-6 text-left align-middle shadow-modal transition-all;
+}
+
+/* Stats Card */
+.stats-card {
+  @apply card p-6;
+}
+
+.stats-card-icon {
+  @apply h-8 w-8 flex-shrink-0;
+}
+
+.stats-card-content {
+  @apply ml-4;
+}
+
+.stats-card-label {
+  @apply text-sm font-medium text-text-secondary;
+}
+
+.stats-card-value {
+  @apply text-2xl font-bold text-text-primary;
+}
+
+.stats-card-meta {
+  @apply text-xs text-text-tertiary;
+}
+
+/* Loading States */
+.loading-spinner {
+  @apply animate-spin rounded-full border-b-2 border-primary-600;
+}
+
+.loading-skeleton {
+  @apply animate-pulse bg-secondary-200 rounded;
+}
+
+/* Focus States */
+.focus-ring {
+  @apply focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2;
+}
+
+/* Text Utilities */
+.text-heading-1 {
+  @apply text-3xl font-bold text-text-primary;
+}
+
+.text-heading-2 {
+  @apply text-2xl font-bold text-text-primary;
+}
+
+.text-heading-3 {
+  @apply text-xl font-semibold text-text-primary;
+}
+
+.text-heading-4 {
+  @apply text-lg font-medium text-text-primary;
+}
+
+.text-body {
+  @apply text-sm text-text-primary;
+}
+
+.text-caption {
+  @apply text-xs text-text-tertiary;
+}
+
+/* Spacing Utilities */
+.section-spacing {
+  @apply space-y-6;
+}
+
+.content-spacing {
+  @apply space-y-4;
+}
+
+.compact-spacing {
+  @apply space-y-2;
+}

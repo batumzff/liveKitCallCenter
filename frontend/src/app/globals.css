@@ -2,28 +2,66 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
+/* Import our design system */
+@import './design-system.css';
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+/* Base styles with our color system */
+@layer base {
+  html {
+    @apply antialiased;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  
+  body {
+    @apply bg-background-secondary text-text-primary;
+  }
+  
+  /* Form element defaults with better contrast */
+  input[type="text"],
+  input[type="email"],
+  input[type="password"],
+  input[type="number"],
+  input[type="tel"],
+  input[type="url"],
+  input[type="search"],
+  input[type="date"],
+  input[type="time"],
+  input[type="datetime-local"],
+  textarea,
+  select {
+    @apply form-input;
+  }
+  
+  /* Button reset */
+  button {
+    @apply focus:outline-none;
+  }
+  
+  /* Link styles */
+  a {
+    @apply text-text-link hover:text-text-link-hover transition-colors duration-200;
+  }
+  
+  /* Headings */
+  h1 {
+    @apply text-heading-1;
+  }
+  
+  h2 {
+    @apply text-heading-2;
+  }
+  
+  h3 {
+    @apply text-heading-3;
+  }
+  
+  h4 {
+    @apply text-heading-4;
+  }
+  
+  /* Form labels */
+  label {
+    @apply form-label;
+  }
 }
 
 @layer utilities {
